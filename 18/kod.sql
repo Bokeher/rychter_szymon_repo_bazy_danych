@@ -44,3 +44,7 @@ VALUES
     (null, "Ziemniaki", 77),
     (null, "Pączek", 452)
 
+SELECT COUNT(id) AS 'ilość posiłków dnia 13.04.2021'
+FROM zjedzony_pokarm
+WHERE DAY(data) = 13
+
