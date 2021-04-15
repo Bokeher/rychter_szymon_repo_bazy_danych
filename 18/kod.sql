@@ -19,7 +19,7 @@ VALUES
     (17, ROUND(RAND()*24+1), ROUND(RAND()*24+1)),
     (18, ROUND(RAND()*24+1), ROUND(RAND()*24+1)),
     (19, ROUND(RAND()*24+1), ROUND(RAND()*24+1)),
-    (20, ROUND(RAND()*24+1), ROUND(RAND()*24+1))
+    (20, ROUND(RAND()*24+1), ROUND(RAND()*24+1));
 
 INSERT INTO produkty
 VALUES 
@@ -42,9 +42,28 @@ VALUES
     (null, "Jajecznica", 148),
     (null, "Arbuz", 30),
     (null, "Ziemniaki", 77),
-    (null, "Pączek", 452)
+    (null, "Pączek", 452);
 
 SELECT COUNT(id) AS 'ilość posiłków dnia 13.04.2021'
 FROM zjedzony_pokarm
-WHERE DAY(data) = 13
+WHERE DAY(data) = 13;
 
+SELECT zjedzony_pokarm.data, produkty.nazwa_produktu, produkty.`kalorycznosc[100g]`
+FROM produkty, zjedzony_pokarm
+WHERE produkty.id = zjedzony_pokarm.id AND DATE(zjedzony_pokarm.data) = '2021-04-14';
+
+SELECT zjedzony_pokarm.data, produkty.nazwa_produktu, produkty.`kalorycznosc[100g]`
+FROM produkty, zjedzony_pokarm
+WHERE produkty.id = zjedzony_pokarm.id AND DATE(zjedzony_pokarm.data) BETWEEN '2021-04-12' AND '2021-04-18';
+
+SELECT zjedzony_pokarm.data, produkty.nazwa_produktu, produkty.`kalorycznosc[100g]`
+FROM produkty, zjedzony_pokarm
+WHERE produkty.id = zjedzony_pokarm.id AND MONTH(DATE(zjedzony_pokarm.data)) = 4;
+
+SELECT nazwa_produktu, `kalorycznosc[100g]`
+FROM produkty
+ORDER BY `kalorycznosc[100g]` DESC;
+
+SELECT nazwa_produktu, `kalorycznosc[100g]`
+FROM produkty
+ORDER BY `kalorycznosc[100g]`;
